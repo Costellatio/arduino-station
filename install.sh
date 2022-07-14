@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Environment
+ARDUINO_LIBRARIES_FOLDER=/home/$USER/Arduino/libraries
+
+# Source
+DEPENDENCIES_SOURCE_FOLDER=src/dependencies/*
+SENSORS_SOURCE_FOLDER=src/sensors/*
+
+for DEPENDENCY_SOURCE in $DEPENDENCIES_SOURCE_FOLDER
+do
+  rm -rf $ARDUINO_LIBRARIES_FOLDER/`basename $DEPENDENCY_SOURCE`
+  cp -r $DEPENDENCY_SOURCE $ARDUINO_LIBRARIES_FOLDER
+done
+
+for SENSOR_SOURCE in $SENSORS_SOURCE_FOLDER
+do
+  rm -rf $ARDUINO_LIBRARIES_FOLDER/`basename $SENSOR_SOURCE`
+  cp -r $SENSOR_SOURCE $ARDUINO_LIBRARIES_FOLDER
+done
+
+echo Successfully installed arduino-station..
